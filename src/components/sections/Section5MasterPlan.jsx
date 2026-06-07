@@ -56,7 +56,7 @@ const HOTSPOTS = [
   {
     id: 5, name: 'West Facing Villa', icon: Home,
     x: 56.4, y: 78.4,
-    image: '/image-assets/west-villa-front-view.jpg',
+    image: '/image-assets/amenities-la-citadel.jpg',
     description: 'Elegant west-facing villas offering pleasant evening light and stunning sunset views from your own home.',
     details: [
       { label: 'Orientation',    value: 'West-facing for warm evening light' },

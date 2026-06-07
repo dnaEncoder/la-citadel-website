@@ -56,7 +56,7 @@ export default function Section7LocationGrowth() {
             </motion.div>
 
             <motion.div {...fade} transition={{ duration: 0.6, delay: 0.12 }} className="flex flex-wrap gap-3 mb-8">
-              <button className="btn-gold">Explore Location</button>
+              <a href="https://share.google/YJCjORxm7NTDSyC5Y" target="_blank" rel="noopener noreferrer" className="btn-gold">Explore Location</a>
               <button className="btn-outline">View Connectivity Map</button>
             </motion.div>
 

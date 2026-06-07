@@ -7,7 +7,7 @@ import OrnamentalDivider from '../ui/OrnamentalDivider'
 const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-80px' } }
 
 const ACTION_CARDS = [
-  { icon: PhoneCall,      label: 'Request a\nCall Back' },
+  { icon: PhoneCall,      label: 'Request a\nCall Back', href: 'tel:+916302604929' },
   { icon: MessageCircle,  label: 'Get Project Details\non WhatsApp', href: 'https://chat.whatsapp.com/JJOSPLEvn5CL1YfgltwMB5' },
   { icon: Calendar,       label: 'Schedule a\nSite Visit' },
 ]
