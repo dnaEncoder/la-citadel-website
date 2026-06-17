@@ -1,15 +1,5 @@
 import nodemailer from 'nodemailer'
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.hostinger.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-})
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST')
@@ -21,6 +11,23 @@ export default async function handler(req, res) {
   if (!name || !phone) {
     return res.status(400).json({ error: 'Name and phone number are required' })
   }
+
+  console.log('SMTP_USER set:', Boolean(process.env.SMTP_USER), '| SMTP_PASS set:', Boolean(process.env.SMTP_PASS))
+
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.error('Missing SMTP_USER or SMTP_PASS environment variable at runtime')
+    return res.status(500).json({ error: 'Email service is not configured. Please contact the site admin.' })
+  }
+
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.hostinger.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  })
 
   try {
     await transporter.sendMail({
