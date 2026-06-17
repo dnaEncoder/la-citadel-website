@@ -4,7 +4,7 @@ import { Play, MapPin, Eye, Home, Building2 } from 'lucide-react'
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
 
-const VIDEO_ID = 'AzSgxdaoAEs'
+const VIDEO_ID = 'mTvd7-VStkM'
 
 const FEATURES = [
   { icon: MapPin,    title: 'Arrival Experience',    body: 'A grand entrance that sets the tone for the life that awaits.' },

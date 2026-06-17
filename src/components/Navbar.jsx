@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { FileText, MessageCircle, Menu, X } from 'lucide-react'
+import BrochureModal from './ui/BrochureModal'
 
 const NAV_LINKS = [
   { label: 'Overview',    href: '#hero' },
@@ -29,6 +30,7 @@ export default function Navbar() {
   const [scrolled, setScrolled]   = useState(false)
   const [active, setActive]       = useState('Overview')
   const [menuOpen, setMenuOpen]   = useState(false)
+  const [brochureOpen, setBrochureOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -90,7 +92,7 @@ export default function Navbar() {
 
         {/* Right actions */}
         <div className="flex items-center gap-2">
-          <button className="hidden lg:flex items-center gap-1.5 px-4 py-2 text-[13px] font-normal text-white border border-gold/45 rounded-lg hover:border-gold/70 transition-colors">
+          <button onClick={() => setBrochureOpen(true)} className="hidden lg:flex items-center gap-1.5 px-4 py-2 text-[13px] font-normal text-white border border-gold/45 rounded-lg hover:border-gold/70 transition-colors">
             <FileText size={14} />
             Brochure
           </button>
@@ -119,11 +121,13 @@ export default function Navbar() {
             </button>
           ))}
           <div className="flex gap-3 pt-2 border-t border-gold/20">
-            <button className="btn-dark-outline py-2 px-4 text-[13px]">Brochure</button>
+            <button onClick={() => { setMenuOpen(false); setBrochureOpen(true) }} className="btn-dark-outline py-2 px-4 text-[13px]">Brochure</button>
             <a href="https://chat.whatsapp.com/JJOSPLEvn5CL1YfgltwMB5" target="_blank" rel="noopener noreferrer" className="btn-gold py-2 px-4 text-[13px]">WhatsApp</a>
           </div>
         </div>
       )}
+
+      <BrochureModal open={brochureOpen} onClose={() => setBrochureOpen(false)} />
     </header>
   )
 }
