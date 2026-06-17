@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, MessageCircle, Calendar, Shield, User, PhoneCall, ChevronDown, Send, Lock, HeadphonesIcon } from 'lucide-react'
+import { Phone, MessageCircle, Calendar, Shield, User, PhoneCall, ChevronDown, Send, Lock, HeadphonesIcon, Loader2, CheckCircle2 } from 'lucide-react'
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
 
@@ -16,8 +16,34 @@ const ENQUIRY_TYPES = ['General Enquiry', 'Request Call Back', 'Get Project Deta
 
 export default function Section3QuickEnquiry() {
   const [form, setForm] = useState({ name: '', phone: '', type: '' })
+  const [status, setStatus] = useState('idle') // idle | submitting | success | error
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleChange = (field, value) => setForm(f => ({ ...f, [field]: value }))
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!form.name || !form.phone) return
+
+    setStatus('submitting')
+    setErrorMsg('')
+
+    try {
+      const res = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Something went wrong')
+
+      setStatus('success')
+      setForm({ name: '', phone: '', type: '' })
+    } catch (err) {
+      setStatus('error')
+      setErrorMsg(err.message || 'Failed to send enquiry. Please try again.')
+    }
+  }
 
   return (
     <section id="enquiry" className="bg-ivory section-pad">
@@ -88,13 +114,14 @@ export default function Section3QuickEnquiry() {
               </div>
 
               {/* Fields */}
-              <div className="flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div>
                   <label className="text-[11px] font-medium tracking-wide text-ink mb-1.5 block">Name</label>
                   <div className="relative">
                     <input
                       type="text"
                       placeholder="Enter your name"
+                      required
                       value={form.name}
                       onChange={e => handleChange('name', e.target.value)}
                       className="w-full px-4 py-3 pr-10 bg-ivory border border-beige rounded-xl text-sm text-ink placeholder:text-muted/60 focus:outline-none focus:border-gold transition-colors"
@@ -109,6 +136,7 @@ export default function Section3QuickEnquiry() {
                     <input
                       type="tel"
                       placeholder="Enter your 10-digit number"
+                      required
                       value={form.phone}
                       onChange={e => handleChange('phone', e.target.value)}
                       className="w-full px-4 py-3 pr-10 bg-ivory border border-beige rounded-xl text-sm text-ink placeholder:text-muted/60 focus:outline-none focus:border-gold transition-colors"
@@ -132,16 +160,36 @@ export default function Section3QuickEnquiry() {
                   </div>
                 </div>
 
-                <button className="btn-gold justify-center w-full mt-2">
-                  <Send size={14} />
-                  Submit Enquiry
+                <button type="submit" disabled={status === 'submitting'} className="btn-gold justify-center w-full mt-2 disabled:opacity-60 disabled:cursor-not-allowed">
+                  {status === 'submitting' ? (
+                    <>
+                      <Loader2 size={14} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={14} />
+                      Submit Enquiry
+                    </>
+                  )}
                 </button>
+
+                {status === 'success' && (
+                  <div className="flex items-center gap-2 justify-center text-green-600">
+                    <CheckCircle2 size={13} />
+                    <p className="text-xs">Thank you! We'll get back to you shortly.</p>
+                  </div>
+                )}
+
+                {status === 'error' && (
+                  <p className="text-xs text-red-500 text-center">{errorMsg}</p>
+                )}
 
                 <div className="flex items-center gap-2 justify-center pt-1">
                   <Lock size={12} className="text-muted/60" />
                   <p className="text-[10px] text-muted/70">Your details are secure and will not be shared.</p>
                 </div>
-              </div>
+              </form>
             </div>
           </motion.div>
         </div>
