@@ -58,7 +58,7 @@ export default function Section1Hero() {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="text-white/65 text-lg leading-relaxed mb-8"
           >
-            Bayfront luxury villas in Rishikonda, designed around greenery, ocean views, and a grand sense of arrival.
+            Bayfront luxury villas in Rushikonda, designed around greenery, ocean views, and a grand sense of arrival.
           </motion.p>
 
           <motion.div

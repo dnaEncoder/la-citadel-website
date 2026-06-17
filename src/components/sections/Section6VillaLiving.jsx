@@ -4,6 +4,7 @@ import { Home, Shield, TrendingUp, Check, ArrowRight, Maximize2, Building2, X, F
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
 import StatsBar from '../ui/StatsBar'
+import BrochureModal from '../ui/BrochureModal'
 
 const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-80px' } }
 
@@ -50,7 +51,7 @@ const STATS = [
   { icon: TrendingUp, title: 'Investment Value',    subtitle: 'Long-Term Growth' },
 ]
 
-function FloorPlanModal({ villa, onClose }) {
+function FloorPlanModal({ villa, onClose, onDownloadBrochure }) {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-charcoal/80 backdrop-blur-sm" />
@@ -89,7 +90,7 @@ function FloorPlanModal({ villa, onClose }) {
             <MessageCircle size={14} />
             Contact Us
           </button>
-          <button className="btn-dark-outline flex-1 justify-center">
+          <button onClick={onDownloadBrochure} className="btn-dark-outline flex-1 justify-center">
             <FileText size={14} />
             Download Brochure
           </button>
@@ -101,12 +102,20 @@ function FloorPlanModal({ villa, onClose }) {
 
 export default function Section6VillaLiving() {
   const [activeVilla, setActiveVilla] = useState(null)
+  const [brochureOpen, setBrochureOpen] = useState(false)
 
   return (
     <>
     <AnimatePresence>
-      {activeVilla && <FloorPlanModal villa={activeVilla} onClose={() => setActiveVilla(null)} />}
+      {activeVilla && (
+        <FloorPlanModal
+          villa={activeVilla}
+          onClose={() => setActiveVilla(null)}
+          onDownloadBrochure={() => { setActiveVilla(null); setBrochureOpen(true) }}
+        />
+      )}
     </AnimatePresence>
+    <BrochureModal open={brochureOpen} onClose={() => setBrochureOpen(false)} />
     <section id="villa-living" className="bg-ivory section-pad">
       <div className="container-wide">
 

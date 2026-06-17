@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Clock, Instagram, Facebook, Youtube, MessageCircle, Building2, Waves, Dumbbell, Coffee, Users, Star, Send } from 'lucide-react'
+import BrochureModal from '../ui/BrochureModal'
 
 const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-60px' } }
 
@@ -24,6 +26,8 @@ const CLUBHOUSE_AMENITIES = [
 ]
 
 export default function Section11Footer() {
+  const [brochureOpen, setBrochureOpen] = useState(false)
+
   return (
     <footer id="footer" className="bg-charcoal relative overflow-hidden">
       {/* Background decorative image placeholder */}
@@ -118,7 +122,7 @@ export default function Section11Footer() {
               </ul>
               <div className="flex flex-col gap-2">
                 <button className="btn-gold text-[13px] py-3 justify-center">Book a Site Visit</button>
-                <button className="btn-dark-outline text-[13px] py-3 justify-center">
+                <button onClick={() => setBrochureOpen(true)} className="btn-dark-outline text-[13px] py-3 justify-center">
                   Download Brochure
                 </button>
               </div>
@@ -186,6 +190,8 @@ export default function Section11Footer() {
         </div>
 
       </div>
+
+      <BrochureModal open={brochureOpen} onClose={() => setBrochureOpen(false)} />
     </footer>
   )
 }

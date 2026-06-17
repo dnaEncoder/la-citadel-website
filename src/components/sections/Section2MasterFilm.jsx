@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Play, MapPin, Eye, Home, Building2 } from 'lucide-react'
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
+import BrochureModal from '../ui/BrochureModal'
 
 const VIDEO_ID = 'mTvd7-VStkM'
 
@@ -17,6 +18,7 @@ const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }
 
 export default function Section2MasterFilm() {
   const [playing, setPlaying] = useState(false)
+  const [brochureOpen, setBrochureOpen] = useState(false)
 
   return (
     <section id="master-film" className="bg-ivory section-pad">
@@ -98,7 +100,7 @@ export default function Section2MasterFilm() {
                 <Play size={14} fill="currentColor" />
                 Watch Master Film
               </button>
-              <button className="btn-outline justify-center">
+              <button onClick={() => setBrochureOpen(true)} className="btn-outline justify-center">
                 Get Brochure
               </button>
             </motion.div>
@@ -110,6 +112,8 @@ export default function Section2MasterFilm() {
           <OrnamentalDivider text="The story of La Citadel — capture every moment." />
         </motion.div>
       </div>
+
+      <BrochureModal open={brochureOpen} onClose={() => setBrochureOpen(false)} />
     </section>
   )
 }

@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Eye, Image, Maximize2 } from 'lucide-react'
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
 import StatsBar from '../ui/StatsBar'
+import BrochureModal from '../ui/BrochureModal'
 
 const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-80px' } }
 
@@ -75,6 +76,7 @@ const STATS = [
 export default function Section10Gallery() {
   const [activeFilter, setActiveFilter] = useState('All Visuals')
   const [featuredIdx, setFeaturedIdx]   = useState(0)
+  const [brochureOpen, setBrochureOpen] = useState(false)
 
   const filtered = GALLERY.filter(item => {
     const cat = CAT_MAP[activeFilter]
@@ -107,7 +109,7 @@ export default function Section10Gallery() {
             </motion.div>
             <motion.div {...fade} transition={{ duration: 0.6, delay: 0.12 }} className="flex flex-wrap gap-3">
               <button className="btn-gold">View Full Gallery</button>
-              <button className="btn-outline">Download Brochure</button>
+              <button onClick={() => setBrochureOpen(true)} className="btn-outline">Download Brochure</button>
             </motion.div>
           </div>
 
@@ -192,6 +194,8 @@ export default function Section10Gallery() {
           <OrnamentalDivider text="La Citadel — A closer look before your visit." />
         </motion.div>
       </div>
+
+      <BrochureModal open={brochureOpen} onClose={() => setBrochureOpen(false)} />
     </section>
   )
 }

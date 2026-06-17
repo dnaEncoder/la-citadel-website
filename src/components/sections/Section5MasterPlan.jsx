@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Building2, Home, Trees, DoorOpen, X, Download, Info, Compass, Map, LayoutGrid } from 'lucide-react'
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
+import BrochureModal from '../ui/BrochureModal'
 
 const HOTSPOTS = [
   {
@@ -87,6 +88,7 @@ const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }
 export default function Section5MasterPlan() {
   const [active, setActive]       = useState(0)
   const [tourMode, setTourMode]   = useState(false)
+  const [brochureOpen, setBrochureOpen] = useState(false)
 
   const spot = HOTSPOTS[active]
 
@@ -203,7 +205,7 @@ export default function Section5MasterPlan() {
                     <Info size={12} />
                     Know more about this feature
                   </button>
-                  <button className="btn-outline justify-center text-[11px] py-2.5">
+                  <button onClick={() => setBrochureOpen(true)} className="btn-outline justify-center text-[11px] py-2.5">
                     <Download size={12} />
                     Download Brochure
                   </button>
@@ -260,6 +262,8 @@ export default function Section5MasterPlan() {
           <OrnamentalDivider text="La Citadel — Where Luxury Meets Location." />
         </motion.div>
       </div>
+
+      <BrochureModal open={brochureOpen} onClose={() => setBrochureOpen(false)} />
     </section>
   )
 }
