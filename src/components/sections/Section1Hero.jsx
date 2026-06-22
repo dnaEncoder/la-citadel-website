@@ -1,15 +1,19 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Play, MessageCircle, MapPin, Home, Mountain, Building2, ChevronDown } from 'lucide-react'
 import Navbar from '../Navbar'
+import VideoModal from '../ui/VideoModal'
 
 const CHIPS = [
   { icon: Home, label: 'Bayfront Villas' },
-  { icon: MapPin, label: 'Rishikonda, Vizag' },
+  { icon: MapPin, label: 'Rushikonda, Vizag' },
   { icon: Mountain, label: 'Hillside Living' },
   { icon: Building2, label: 'Clubhouse Lifestyle' },
 ]
 
 export default function Section1Hero() {
+  const [videoOpen, setVideoOpen] = useState(false)
+
   return (
     <section id="hero" className="relative min-h-screen flex flex-col overflow-hidden bg-charcoal">
 
@@ -67,7 +71,7 @@ export default function Section1Hero() {
             transition={{ duration: 0.6, delay: 0.65 }}
             className="flex flex-wrap gap-3"
           >
-            <button className="btn-gold">
+            <button onClick={() => setVideoOpen(true)} className="btn-gold">
               <Play size={15} fill="currentColor" />
               Watch Master Film
             </button>
@@ -114,6 +118,8 @@ export default function Section1Hero() {
         </div>
         <div className="flex-1 h-px bg-gradient-to-l from-transparent via-gold/40 to-gold/60" />
       </motion.div>
+
+      <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} />
     </section>
   )
 }

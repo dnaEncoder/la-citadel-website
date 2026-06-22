@@ -7,7 +7,7 @@ import OrnamentalDivider from '../ui/OrnamentalDivider'
 const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-80px' } }
 
 const DISTANCES = [
-  { icon: Waves,        label: 'Rishikonda Beach',       time: '5 MIN',  dist: '2.2 KM' },
+  { icon: Waves,        label: 'Rushikonda Beach',       time: '5 MIN',  dist: '2.2 KM' },
   { icon: Building2,    label: 'IT / Commercial Belt',    time: '10 MIN', dist: '4.5 KM' },
   { icon: GraduationCap,label: 'Educational Institutions',time: '12 MIN', dist: '6.1 KM' },
   { icon: Hospital,     label: 'Healthcare Access',       time: '15 MIN', dist: '7.5 KM' },
@@ -51,7 +51,7 @@ export default function Section7LocationGrowth() {
                 And Why It <span className="text-gold">Matters</span>
               </h2>
               <p className="body-md max-w-md mb-8">
-                Nestled in the prestigious Rishikonda corridor, Vizag — where coastal beauty meets connectivity and opportunity. La Citadel is perfectly positioned for a lifestyle today and exceptional value tomorrow.
+                Nestled in the prestigious Rushikonda corridor, Vizag — where coastal beauty meets connectivity and opportunity. La Citadel is perfectly positioned for a lifestyle today and exceptional value tomorrow.
               </p>
             </motion.div>
 
@@ -82,7 +82,7 @@ export default function Section7LocationGrowth() {
             <div className="relative rounded-2xl overflow-hidden border border-beige shadow-sm" style={{ aspectRatio: '4/3' }}>
               <img
                 src="/image-assets/location_growth_image.jpg"
-                alt="Rishikonda coastal location — La Citadel"
+                alt="Rushikonda coastal location — La Citadel"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -156,7 +156,7 @@ export default function Section7LocationGrowth() {
           <motion.div {...fade} transition={{ duration: 0.6, delay: 0.35 }} className="flex-1 min-w-0">
             <EyebrowLabel>The Story of Growth</EyebrowLabel>
             <p className="body-md mt-3 mb-6 max-w-md">
-              From serene coastline to a vibrant growth corridor, Rishikonda is Vizag's next chapter of progress. Discover how location, lifestyle, and infrastructure come together to create lasting value.
+              From serene coastline to a vibrant growth corridor, Rushikonda is Vizag's next chapter of progress. Discover how location, lifestyle, and infrastructure come together to create lasting value.
             </p>
             <div className="grid grid-cols-2 gap-4">
               {GROWTH_POINTS.map(({ title, body }) => (

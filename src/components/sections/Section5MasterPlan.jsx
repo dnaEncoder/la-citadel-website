@@ -13,7 +13,7 @@ const HOTSPOTS = [
     description: 'A grand, curated arrival experience that sets the tone for life at La Citadel — where every homecoming feels extraordinary.',
     details: [
       { label: 'Project',           value: 'La Citadel — Luxury Villa Community' },
-      { label: 'Location',          value: 'Rishikonda, Visakhapatnam' },
+      { label: 'Location',          value: 'Rushikonda, Visakhapatnam' },
       { label: 'Total Area',        value: 'Expansive Acres, Master Planned' },
       { label: 'Arrival Experience', value: 'Grand entrance with landscaped driveway & 24/7 security' },
     ],

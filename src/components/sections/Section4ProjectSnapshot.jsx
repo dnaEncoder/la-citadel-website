@@ -8,7 +8,7 @@ const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }
 
 const FEATURES = [
   { icon: Home,      title: 'Villa Community',    desc: 'Curated luxury villas enclave' },
-  { icon: MapPin,    title: 'Rishikonda, Vizag',  desc: 'Prime coastal location' },
+  { icon: MapPin,    title: 'Rushikonda, Vizag',  desc: 'Prime coastal location' },
   { icon: Building2, title: 'Clubhouse Lifestyle', desc: 'Premium amenities & experiences' },
   { icon: Shield,    title: 'Secure & Gated',      desc: 'Privacy, safety and peace of mind' },
 ]
@@ -43,7 +43,7 @@ export default function Section4ProjectSnapshot() {
               </h2>
               <div className="gold-divider mt-3 mb-5" />
               <p className="body-md max-w-sm mb-8">
-                A premium villa community in Rishikonda, Vizag, crafted for those who seek space, privacy, lifestyle and long-term location value.
+                A premium villa community in Rushikonda, Vizag, crafted for those who seek space, privacy, lifestyle and long-term location value.
               </p>
             </motion.div>
 

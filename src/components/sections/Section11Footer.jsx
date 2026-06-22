@@ -50,7 +50,7 @@ export default function Section11Footer() {
               <img src="/logo.png" alt="La Citadel" className="h-10 w-auto object-contain mb-4" />
               <p className="text-[11px] font-medium tracking-[0.2em] uppercase text-gold/80 mb-3">On The Hills – Off The Sea</p>
               <p className="text-xs text-white/45 leading-relaxed mb-5">
-                La Citadel is a premium coastal villa community at Rishikonda, Vizag, crafted for those who seek the finest in life. Where the hills embrace the sea and luxury becomes your everyday.
+                La Citadel is a premium coastal villa community at Rushikonda, Vizag, crafted for those who seek the finest in life. Where the hills embrace the sea and luxury becomes your everyday.
               </p>
               <div className="flex items-center gap-2">
                 {SOCIAL.map(({ icon: Icon, label, href }) => (
@@ -111,7 +111,7 @@ export default function Section11Footer() {
                 {[
                   { icon: Phone,  text: '+91 98765 43210' },
                   { icon: Mail,   text: 'hello@lacitadel.com' },
-                  { icon: MapPin, text: 'Rishikonda, Visakhapatnam, Andhra Pradesh' },
+                  { icon: MapPin, text: 'Rushikonda, Visakhapatnam, Andhra Pradesh' },
                   { icon: Clock,  text: 'Mon – Sun: 10:00 AM – 7:00 PM' },
                 ].map(({ icon: Icon, text }) => (
                   <li key={text} className="flex gap-2.5 items-start">
