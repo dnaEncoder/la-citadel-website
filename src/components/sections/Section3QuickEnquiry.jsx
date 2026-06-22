@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Phone, MessageCircle, Calendar, Shield, User, PhoneCall, ChevronDown, Send, Lock, HeadphonesIcon, Loader2, CheckCircle2 } from 'lucide-react'
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
+import SiteVisitModal from '../ui/SiteVisitModal'
 
 const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-80px' } }
 
@@ -18,6 +19,7 @@ export default function Section3QuickEnquiry() {
   const [form, setForm] = useState({ name: '', phone: '', type: '' })
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState('')
+  const [siteVisitOpen, setSiteVisitOpen] = useState(false)
 
   const handleChange = (field, value) => setForm(f => ({ ...f, [field]: value }))
 
@@ -83,7 +85,7 @@ export default function Section3QuickEnquiry() {
                 return href ? (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>
                 ) : (
-                  <button key={label} className={cls}>{inner}</button>
+                  <button key={label} onClick={() => setSiteVisitOpen(true)} className={cls}>{inner}</button>
                 )
               })}
             </motion.div>
@@ -199,6 +201,8 @@ export default function Section3QuickEnquiry() {
           <OrnamentalDivider text="We'll get back to you within minutes." />
         </motion.div>
       </div>
+
+      <SiteVisitModal open={siteVisitOpen} onClose={() => setSiteVisitOpen(false)} />
     </section>
   )
 }

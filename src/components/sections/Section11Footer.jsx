@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Clock, Instagram, Facebook, Youtube, MessageCircle, Building2, Waves, Dumbbell, Coffee, Users, Star, Send } from 'lucide-react'
 import BrochureModal from '../ui/BrochureModal'
+import SiteVisitModal from '../ui/SiteVisitModal'
 
 const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-60px' } }
 
@@ -27,6 +28,7 @@ const CLUBHOUSE_AMENITIES = [
 
 export default function Section11Footer() {
   const [brochureOpen, setBrochureOpen] = useState(false)
+  const [siteVisitOpen, setSiteVisitOpen] = useState(false)
 
   return (
     <footer id="footer" className="bg-charcoal relative overflow-hidden">
@@ -121,7 +123,7 @@ export default function Section11Footer() {
                 ))}
               </ul>
               <div className="flex flex-col gap-2">
-                <button className="btn-gold text-[13px] py-3 justify-center">Book a Site Visit</button>
+                <button onClick={() => setSiteVisitOpen(true)} className="btn-gold text-[13px] py-3 justify-center">Book a Site Visit</button>
                 <button onClick={() => setBrochureOpen(true)} className="btn-dark-outline text-[13px] py-3 justify-center">
                   Download Brochure
                 </button>
@@ -192,6 +194,7 @@ export default function Section11Footer() {
       </div>
 
       <BrochureModal open={brochureOpen} onClose={() => setBrochureOpen(false)} />
+      <SiteVisitModal open={siteVisitOpen} onClose={() => setSiteVisitOpen(false)} />
     </footer>
   )
 }
