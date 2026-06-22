@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Building2, Home, Trees, DoorOpen, X, Download, Info, Compass, Map, LayoutGrid } from 'lucide-react'
+import { Building2, Home, Trees, DoorOpen, X, Download, Compass, Map } from 'lucide-react'
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
 import BrochureModal from '../ui/BrochureModal'
@@ -9,7 +9,7 @@ const HOTSPOTS = [
   {
     id: 1, name: 'Entrance', icon: DoorOpen,
     x: 63.1, y: 42.3,
-    image: '/image-assets/hotspot-entrance.jpeg',
+    image: '/image-assets/club-house-reception-1.jpeg',
     description: 'A grand, curated arrival experience that sets the tone for life at La Citadel — where every homecoming feels extraordinary.',
     details: [
       { label: 'Project',           value: 'La Citadel — Luxury Villa Community' },
@@ -33,7 +33,7 @@ const HOTSPOTS = [
   {
     id: 3, name: 'Public Area', icon: Trees,
     x: 54.8, y: 56.2,
-    image: '/image-assets/quick-look-1.jpg',
+    image: '/image-assets/seating-spaces-amenitities.jpg',
     description: 'Lush landscaped open spaces where families can stroll, play, and connect with nature every day.',
     details: [
       { label: 'Green Cover',    value: 'Extensively landscaped throughout the community' },
@@ -57,7 +57,7 @@ const HOTSPOTS = [
   {
     id: 5, name: 'West Facing Villa', icon: Home,
     x: 56.4, y: 78.4,
-    image: '/image-assets/amenities-la-citadel.jpg',
+    image: '/image-assets/west-villa-front-view.jpg',
     description: 'Elegant west-facing villas offering pleasant evening light and stunning sunset views from your own home.',
     details: [
       { label: 'Orientation',    value: 'West-facing for warm evening light' },
@@ -66,22 +66,9 @@ const HOTSPOTS = [
       { label: 'Built-up Area',  value: '8,476 Sq. Ft. across G+2 floors' },
     ],
   },
-  {
-    id: 6, name: 'Luxury Villas', icon: LayoutGrid,
-    x: 30.3, y: 29.5,
-    image: '/image-assets/quick-look-2.jpg',
-    soldOut: true,
-    description: 'An exclusive collection of luxury villas — part of La Citadel\'s premium offering. This phase has been fully sold out.',
-    details: [
-      { label: 'Status',         value: '🔴 Fully Sold Out' },
-      { label: 'Villa Type',     value: 'Premium Luxury Villas' },
-      { label: 'Community',      value: 'Part of La Citadel gated enclave' },
-      { label: 'Availability',   value: 'No units remaining in this phase' },
-    ],
-  },
 ]
 
-const TOUR_STEPS = ['Entrance', 'Clubhouse', 'Public Area', 'East Villa', 'West Villa', 'Luxury Villas']
+const TOUR_STEPS = ['Entrance', 'Clubhouse', 'Public Area', 'East Villa', 'West Villa']
 
 const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-80px' } }
 
@@ -201,11 +188,7 @@ export default function Section5MasterPlan() {
 
                 {/* Panel buttons */}
                 <div className="p-4 flex flex-col gap-2 border-t border-beige mt-2">
-                  <button className="btn-gold justify-center text-[11px] py-2.5">
-                    <Info size={12} />
-                    Know more about this feature
-                  </button>
-                  <button onClick={() => setBrochureOpen(true)} className="btn-outline justify-center text-[11px] py-2.5">
+                  <button onClick={() => setBrochureOpen(true)} className="btn-gold justify-center text-[11px] py-2.5">
                     <Download size={12} />
                     Download Brochure
                   </button>
