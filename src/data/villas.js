@@ -1,0 +1,36 @@
+export const VILLAS = [
+  {
+    name: 'East Facing Villa',
+    subtitle: 'Standard layout. East-facing orientation.',
+    image: '/image-assets/east-villa-front-view.jpg',
+    floorPlan: '/image-assets/east-villa-floor-plan.jpg',
+    streetView: '/image-assets/east-villa-street-view.jpg',
+    orientation: 'East-facing for natural morning light',
+    layout: 'Standard villa layout across all units',
+    plotArea: '600 Sq. Yds.',
+    builtUpArea: '8,675 Sq. Ft. across G+2 floors',
+    features: [
+      'Standard layout across all villas',
+      'East-facing orientation for natural light and uplifting mornings',
+      'Spacious planning for comfortable living',
+      'Privacy-focused design for family well-being',
+    ],
+  },
+  {
+    name: 'West Facing Villa',
+    subtitle: 'Standard layout. West-facing orientation.',
+    image: '/image-assets/west-villa-front-view.jpg',
+    floorPlan: '/image-assets/west-villa-floor-plan.jpg',
+    streetView: '/image-assets/west-villa-street-view.jpg',
+    orientation: 'West-facing for warm evening light',
+    layout: 'Standard villa layout across all units',
+    plotArea: '600 Sq. Yds.',
+    builtUpArea: '8,476 Sq. Ft. across G+2 floors',
+    features: [
+      'Standard layout across all villas',
+      'West-facing orientation for pleasant evenings and balanced light',
+      'Spacious planning for comfortable living',
+      'Privacy-focused design for family well-being',
+    ],
+  },
+]

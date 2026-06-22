@@ -1,39 +1,14 @@
 import { motion } from 'framer-motion'
-import { Plane, GraduationCap, Hospital, Building2, Waves, TrendingUp, Navigation, Play, Pause, Volume2, Settings, Maximize } from 'lucide-react'
-import { useState } from 'react'
+import { Navigation, TrendingUp, Waves } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
+import { DISTANCES, TIMELINE } from '../../data/locationGrowth'
 
 const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-80px' } }
 
-const DISTANCES = [
-  { icon: Waves,        label: 'Rushikonda Beach',       time: '5 MIN',  dist: '2.2 KM' },
-  { icon: Building2,    label: 'IT / Commercial Belt',    time: '10 MIN', dist: '4.5 KM' },
-  { icon: GraduationCap,label: 'Educational Institutions',time: '12 MIN', dist: '6.1 KM' },
-  { icon: Hospital,     label: 'Healthcare Access',       time: '15 MIN', dist: '7.5 KM' },
-  { icon: Plane,        label: 'Airport Connectivity',    time: '18 MIN', dist: '12.4 KM' },
-]
-
-const GROWTH_POINTS = [
-  { title: 'Coastal Lifestyle',   body: 'Breathtaking sea views and a serene environment.' },
-  { title: 'Connectivity Edge',   body: 'Excellent access to city, IT parks, and airport.' },
-  { title: 'Tourism Growth',      body: 'Rising visitor footfall and hospitality development.' },
-  { title: 'Infrastructure Rise', body: 'Roads, amenities, and urban infrastructure expanding rapidly.' },
-  { title: 'IT & Commercial Hub', body: 'Tech parks and business zones driving employment and investment.' },
-  { title: 'Future Value',        body: 'Strong appreciation potential and sustainable real estate demand.' },
-]
-
-const TIMELINE = [
-  { year: '2024',       label: 'Today',         text: 'Strong coastal foundation' },
-  { year: '2025–2026',  label: '',               text: 'Better Roads & City Connectivity' },
-  { year: '2026–2028',  label: '',               text: 'Tourism & Hospitality Expansion' },
-  { year: '2028–2030',  label: '',               text: 'IT Parks & Commercial Ecosystem Growth' },
-  { year: '2030+',      label: 'Future',         text: 'Sustained Value & Premium Living' },
-]
-
-
 export default function Section7LocationGrowth() {
-  const [playing, setPlaying] = useState(false)
+  const navigate = useNavigate()
 
   return (
     <section id="location" className="bg-ivory section-pad">
@@ -57,7 +32,7 @@ export default function Section7LocationGrowth() {
 
             <motion.div {...fade} transition={{ duration: 0.6, delay: 0.12 }} className="flex flex-wrap gap-3 mb-8">
               <a href="https://share.google/YJCjORxm7NTDSyC5Y" target="_blank" rel="noopener noreferrer" className="btn-gold">Explore Location</a>
-              <button className="btn-outline">View Connectivity Map</button>
+              <button onClick={() => navigate('/location-growth')} className="btn-outline">View Connectivity Map</button>
             </motion.div>
 
             <motion.div {...fade} transition={{ duration: 0.6, delay: 0.22 }} className="flex items-stretch gap-0">
@@ -108,67 +83,6 @@ export default function Section7LocationGrowth() {
             <p className="text-[10px] text-muted/60 italic">* Distances and drive times are approximate. Final values to be verified before publishing.</p>
           </div>
         </motion.div>
-
-        {/* Bottom 2-col: video + growth grid — hidden for now, re-enable when ready */}
-        {false && <div className="flex flex-col lg:flex-row gap-10 mb-10">
-
-          {/* Left: growth video */}
-          <motion.div {...fade} transition={{ duration: 0.6, delay: 0.3 }} className="flex-1 min-w-0">
-            <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '16/10' }}>
-              <div className="absolute inset-0 placeholder-bg-coastal" />
-
-              {/* Text overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent" />
-              <div className="absolute bottom-16 left-6 right-6">
-                <h3 className="font-serif font-light text-2xl text-white mb-2">Why This Location<br />Will Grow</h3>
-                <p className="text-white/60 text-xs leading-relaxed">
-                  Coastal beauty. Strategic connectivity. Rising tourism. Strong infrastructure. A future built for value.
-                </p>
-              </div>
-
-              {/* Play button */}
-              <button
-                onClick={() => setPlaying(v => !v)}
-                className="absolute inset-0 flex items-center justify-center group"
-              >
-                <div className="w-14 h-14 rounded-full border-2 border-white/60 bg-charcoal/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-gold/80 group-hover:border-gold transition-all">
-                  {playing ? <Pause size={18} className="text-white" /> : <Play size={18} className="text-white ml-1" fill="white" />}
-                </div>
-              </button>
-
-              {/* Controls */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/90 to-transparent px-4 py-3">
-                <div className="flex items-center gap-3">
-                  <button onClick={() => setPlaying(v => !v)} className="text-white/80">
-                    {playing ? <Pause size={13} /> : <Play size={13} fill="currentColor" />}
-                  </button>
-                  <span className="text-white/55 text-[10px] font-mono">0:00 / 2:45</span>
-                  <div className="flex-1 h-0.5 bg-white/20 rounded-full" />
-                  <Volume2 size={12} className="text-white/70" />
-                  <Settings size={12} className="text-white/70" />
-                  <Maximize size={12} className="text-white/70" />
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right: growth grid */}
-          <motion.div {...fade} transition={{ duration: 0.6, delay: 0.35 }} className="flex-1 min-w-0">
-            <EyebrowLabel>The Story of Growth</EyebrowLabel>
-            <p className="body-md mt-3 mb-6 max-w-md">
-              From serene coastline to a vibrant growth corridor, Rushikonda is Vizag's next chapter of progress. Discover how location, lifestyle, and infrastructure come together to create lasting value.
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              {GROWTH_POINTS.map(({ title, body }) => (
-                <div key={title} className="p-4 bg-card rounded-xl border border-beige">
-                  <div className="gold-divider mb-2" />
-                  <p className="text-xs font-medium text-ink mb-1">{title}</p>
-                  <p className="text-[11px] text-muted leading-snug">{body}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>}
 
         {/* Timeline */}
         <motion.div {...fade} transition={{ duration: 0.6, delay: 0.4 }} className="card-light p-6 mb-6">

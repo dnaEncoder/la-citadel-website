@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Home, Shield, TrendingUp, Check, ArrowRight, Maximize2, Building2, X, FileText, MessageCircle } from 'lucide-react'
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
 import StatsBar from '../ui/StatsBar'
 import BrochureModal from '../ui/BrochureModal'
+import { VILLAS } from '../../data/villas'
 
 const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-80px' } }
 
@@ -12,35 +14,6 @@ const BENEFITS = [
   { icon: Home,      label: 'Spacious Private Living' },
   { icon: Shield,    label: 'Privacy & Exclusivity' },
   { icon: TrendingUp, label: 'Long-Term Value' },
-]
-
-const VILLAS = [
-  {
-    name: 'East Facing Villa',
-    subtitle: 'Standard layout. East-facing orientation.',
-    image: '/image-assets/east-villa-front-view.jpg',
-    floorPlan: '/image-assets/east-villa-floor-plan.jpg',
-    streetView: '/image-assets/east-villa-street-view.jpg',
-    features: [
-      'Standard layout across all villas',
-      'East-facing orientation for natural light and uplifting mornings',
-      'Spacious planning for comfortable living',
-      'Privacy-focused design for family well-being',
-    ],
-  },
-  {
-    name: 'West Facing Villa',
-    subtitle: 'Standard layout. West-facing orientation.',
-    image: '/image-assets/west-villa-front-view.jpg',
-    floorPlan: '/image-assets/west-villa-floor-plan.jpg',
-    streetView: '/image-assets/west-villa-street-view.jpg',
-    features: [
-      'Standard layout across all villas',
-      'West-facing orientation for pleasant evenings and balanced light',
-      'Spacious planning for comfortable living',
-      'Privacy-focused design for family well-being',
-    ],
-  },
 ]
 
 const STATS = [
@@ -101,6 +74,7 @@ function FloorPlanModal({ villa, onClose, onDownloadBrochure }) {
 }
 
 export default function Section6VillaLiving() {
+  const navigate = useNavigate()
   const [activeVilla, setActiveVilla] = useState(null)
   const [brochureOpen, setBrochureOpen] = useState(false)
 
@@ -136,7 +110,7 @@ export default function Section6VillaLiving() {
             </motion.div>
 
             <motion.div {...fade} transition={{ duration: 0.6, delay: 0.15 }} className="flex flex-wrap gap-3 mb-8">
-              <button className="btn-gold">Explore Villa Types</button>
+              <button onClick={() => navigate('/villa-living')} className="btn-gold">Explore Villa Types</button>
               <button className="btn-outline">View Floor Plans</button>
             </motion.div>
 
