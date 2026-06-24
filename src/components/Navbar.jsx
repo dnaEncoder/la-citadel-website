@@ -5,6 +5,7 @@ import BrochureModal from './ui/BrochureModal'
 
 const NAV_LINKS = [
   { label: 'Overview',    href: '#hero',           type: 'anchor' },
+  { label: 'Builders',    href: '#builders',        type: 'anchor' },
   { label: 'Master Plan', href: '#master-plan',     type: 'anchor' },
   { label: 'Villas',      href: '/villa-living',    type: 'route' },
   { label: 'Amenities',   href: '#clubhouse',       type: 'anchor' },
@@ -13,13 +14,14 @@ const NAV_LINKS = [
   { label: 'Contact',     href: '/contact-us',      type: 'route' },
 ]
 
-const SECTION_IDS = ['hero', 'master-film', 'enquiry', 'snapshot', 'master-plan', 'villa-living', 'location', 'clubhouse', 'whatsapp', 'gallery']
+const SECTION_IDS = ['hero', 'master-film', 'enquiry', 'snapshot', 'builders', 'master-plan', 'villa-living', 'location', 'clubhouse', 'whatsapp', 'gallery']
 
 const SECTION_TO_NAV = {
   'hero':        'Overview',
   'master-film': 'Overview',
   'enquiry':     'Overview',
   'snapshot':    'Overview',
+  'builders':    'Builders',
   'master-plan': 'Master Plan',
   'villa-living':'Villas',
   'location':    'Location',
