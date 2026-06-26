@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer'
+import { isValidPhone, isValidEmail } from '../src/utils/validation.js'
 
 const SITE_ADDRESS = 'La Citadel, Rushikonda, Visakhapatnam, Andhra Pradesh'
 
@@ -12,6 +13,13 @@ export default async function handler(req, res) {
 
   if (!name || !phone || !email || !date || !time) {
     return res.status(400).json({ error: 'Name, phone, email, date, and time are required' })
+  }
+
+  if (!isValidPhone(phone)) {
+    return res.status(400).json({ error: 'Please enter a valid 10-digit phone number.' })
+  }
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ error: 'Please enter a valid email address (Gmail, Outlook, Hotmail, Yahoo, etc.).' })
   }
 
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {

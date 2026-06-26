@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download, User, Phone, Mail, Loader2, CheckCircle2 } from 'lucide-react'
+import { isValidPhone, isValidEmail, PHONE_ERROR, EMAIL_ERROR } from '../../utils/validation'
 
 const BROCHURE_URL = 'https://drive.google.com/file/d/1AlRQ-ZCmOc7XRYrifsYKHpKlybHNXnNw/view?usp=sharing'
 
@@ -28,6 +29,17 @@ export default function BrochureModal({ open, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!form.name || !form.phone || !form.email) return
+
+    if (!isValidPhone(form.phone)) {
+      setStatus('error')
+      setErrorMsg(PHONE_ERROR)
+      return
+    }
+    if (!isValidEmail(form.email)) {
+      setStatus('error')
+      setErrorMsg(EMAIL_ERROR)
+      return
+    }
 
     setStatus('submitting')
     setErrorMsg('')

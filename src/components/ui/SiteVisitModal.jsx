@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Calendar, User, Phone, Mail, Clock, Loader2, CheckCircle2 } from 'lucide-react'
+import { isValidPhone, isValidEmail, PHONE_ERROR, EMAIL_ERROR } from '../../utils/validation'
 
 const TIME_SLOTS = ['10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM']
 
@@ -30,6 +31,17 @@ export default function SiteVisitModal({ open, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!form.name || !form.phone || !form.email || !form.date || !form.time) return
+
+    if (!isValidPhone(form.phone)) {
+      setStatus('error')
+      setErrorMsg(PHONE_ERROR)
+      return
+    }
+    if (!isValidEmail(form.email)) {
+      setStatus('error')
+      setErrorMsg(EMAIL_ERROR)
+      return
+    }
 
     setStatus('submitting')
     setErrorMsg('')

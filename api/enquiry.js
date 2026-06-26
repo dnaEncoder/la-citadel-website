@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer'
+import { isValidPhone } from '../src/utils/validation.js'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -10,6 +11,10 @@ export default async function handler(req, res) {
 
   if (!name || !phone) {
     return res.status(400).json({ error: 'Name and phone number are required' })
+  }
+
+  if (!isValidPhone(phone)) {
+    return res.status(400).json({ error: 'Please enter a valid 10-digit phone number.' })
   }
 
   console.log('SMTP_USER set:', Boolean(process.env.SMTP_USER), '| SMTP_PASS set:', Boolean(process.env.SMTP_PASS))

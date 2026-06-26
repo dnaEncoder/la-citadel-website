@@ -4,6 +4,7 @@ import { Phone, MessageCircle, Calendar, Shield, User, PhoneCall, ChevronDown, S
 import EyebrowLabel from '../ui/EyebrowLabel'
 import OrnamentalDivider from '../ui/OrnamentalDivider'
 import SiteVisitModal from '../ui/SiteVisitModal'
+import { isValidPhone, PHONE_ERROR } from '../../utils/validation'
 
 const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-80px' } }
 
@@ -26,6 +27,12 @@ export default function Section3QuickEnquiry() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!form.name || !form.phone) return
+
+    if (!isValidPhone(form.phone)) {
+      setStatus('error')
+      setErrorMsg(PHONE_ERROR)
+      return
+    }
 
     setStatus('submitting')
     setErrorMsg('')

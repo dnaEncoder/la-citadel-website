@@ -4,6 +4,7 @@ import { User, Phone, ChevronDown, Send, Lock, HeadphonesIcon, Loader2, CheckCir
 import Navbar from '../components/Navbar'
 import PageHero from '../components/ui/PageHero'
 import Section11Footer from '../components/sections/Section11Footer'
+import { isValidPhone, PHONE_ERROR } from '../utils/validation'
 
 const ENQUIRY_TYPES = ['General Enquiry', 'Request Call Back', 'Get Project Details', 'Schedule Site Visit', 'Download Brochure']
 
@@ -19,6 +20,12 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!form.name || !form.phone) return
+
+    if (!isValidPhone(form.phone)) {
+      setStatus('error')
+      setErrorMsg(PHONE_ERROR)
+      return
+    }
 
     setStatus('submitting')
     setErrorMsg('')
