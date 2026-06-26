@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download, User, Phone, Mail, Loader2, CheckCircle2 } from 'lucide-react'
 
-const BROCHURE_URL = 'https://drive.google.com/file/d/1PUrURjVA8_zzxfT8uz5xILa71464RwTs/view?usp=sharing'
+const BROCHURE_URL = 'https://drive.google.com/file/d/1AlRQ-ZCmOc7XRYrifsYKHpKlybHNXnNw/view?usp=sharing'
 
 export default function BrochureModal({ open, onClose }) {
   const [form, setForm] = useState({ name: '', phone: '', email: '' })

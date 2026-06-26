@@ -130,9 +130,7 @@ export default function Section9WhatsApp() {
           <div className="flex flex-col sm:flex-row items-center gap-6 p-6">
             {/* Image */}
             <div className="w-full sm:w-48 h-32 rounded-xl overflow-hidden flex-shrink-0">
-              <div className="w-full h-full placeholder-bg-dark flex items-center justify-center">
-                <span className="text-white/12 text-[9px] tracking-widest uppercase">Entrance Image</span>
-              </div>
+              <img src="/image-assets/hotspot-clubhouse.jpeg" alt="La Citadel clubhouse" className="w-full h-full object-cover" />
             </div>
 
             {/* Text */}

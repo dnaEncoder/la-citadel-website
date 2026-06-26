@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-const BROCHURE_URL = 'https://drive.google.com/file/d/1PUrURjVA8_zzxfT8uz5xILa71464RwTs/view?usp=sharing'
+const BROCHURE_URL = 'https://drive.google.com/file/d/1AlRQ-ZCmOc7XRYrifsYKHpKlybHNXnNw/view?usp=sharing'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
